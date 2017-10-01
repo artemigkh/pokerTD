@@ -1,3 +1,0 @@
-C:/Users/Artem/pokerTD/cmake-build-debug/CMakeFiles/pokerTD.dir
-C:/Users/Artem/pokerTD/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Artem/pokerTD/cmake-build-debug/CMakeFiles/rebuild_cache.dir
