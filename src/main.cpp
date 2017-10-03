@@ -7,10 +7,12 @@
 
 using namespace std;
 
-int main( int argc, char* args[] )
+int main()
 {
     // create the window
-    sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
+    sf::ContextSettings settings;
+    settings.antialiasingLevel = 8;
+    sf::RenderWindow window(sf::VideoMode(800, 600), "My window", sf::Style::Default, settings);
 
     // run the program as long as the window is open
     while (window.isOpen())
@@ -27,8 +29,16 @@ int main( int argc, char* args[] )
         // clear the window with black color
         window.clear(sf::Color::Black);
 
-        // draw everything here...
-        // window.draw(...);
+        sf::CircleShape shape(50);
+        shape.setFillColor(sf::Color(150, 50, 250));
+
+        // set a 10-pixel wide orange outline
+        shape.setOutlineThickness(10);
+        shape.setOutlineColor(sf::Color(250, 150, 100));
+
+        shape.setPosition(150,150);
+
+        window.draw(shape);
 
         // end the current frame
         window.display();

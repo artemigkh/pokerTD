@@ -8,6 +8,6 @@ include_directories(${SFML_INCLUDE_DIR})
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(SOURCE_FILES src/main.cpp)
+set(SOURCE_FILES src/main.cpp src/StateManager/GameStateInterface.cpp src/include/GameStateInterface.h src/StateManager/GameEngine.cpp src/include/GameEngine.h)
 add_executable(pokerTD ${SOURCE_FILES} src/main.cpp)
 target_link_libraries(pokerTD ${SFML_LIBRARIES})
