@@ -16,15 +16,17 @@ PlayStateModel::PlayStateModel() {
     terrainBlocks = new Terrain *[gameConstant::NUM_SQUARES_WIDE * gameConstant::NUM_SQUARES_HIGH];
     //open map file to read from
     std::ifstream mapReader;
-    mapReader.open("../../config/maps/mapEasy.txt");
+    mapReader.open("../../config/maps/easy.map");
 
     if (!mapReader) {
-        std::cerr << "Could not open file mapEasy.txt" << std::endl;
+        std::cerr << "Could not open file easy.map" << std::endl;
     } else {
+        //TODO: add in checking for badly formed map files
         //generate blocks
         int i = 0;
         for (int x_pos = 0; x_pos < gameConstant::NUM_SQUARES_WIDE; x_pos++) {
             for (int y_pos = 0; y_pos < gameConstant::NUM_SQUARES_HIGH; y_pos++) {
+                std::cout << "creating terrain with position " << x_pos * gameConstant::SQUARE_WIDTH << ", " << y_pos * gameConstant::SQUARE_HEIGHT << std::endl;
                 std::string temp;
                 mapReader >> temp;
                 terrainBlocks[i] = new Terrain(x_pos * gameConstant::SQUARE_WIDTH,
