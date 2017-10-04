@@ -7,25 +7,25 @@
 
 #include<vector>
 
+#include <SFML/Window.hpp>
+
 class GameStateInterface;
 
 class GameEngine {
 public:
-    void Init();
+    void Run();
     void Cleanup();
 
     void changeState(GameStateInterface *state);
     void PushState(GameStateInterface *state);
     void PopState();
 
-    void HandleEvents();
+    void Stop();
+
+private:
     void Update();
     void Draw();
 
-    bool Running();
-    void Quit();
-
-private:
     std::vector<GameStateInterface*> states;
     bool running;
 };

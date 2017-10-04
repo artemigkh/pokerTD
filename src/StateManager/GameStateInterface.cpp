@@ -3,3 +3,7 @@
 //
 
 #include "../include/GameStateInterface.h"
+
+GameStateInterface::~GameStateInterface() {
+
+}

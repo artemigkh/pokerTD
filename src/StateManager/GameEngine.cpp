@@ -2,25 +2,62 @@
 // Created by Artem on 10/2/2017.
 //
 
-#include "../include/GameEngine.h"
-#include "../include/GameStateInterface.h"
-
 #include <iostream>
 
-void GameEngine::Init() {
+#include <SFML/Window.hpp>
+#include <SFML/Graphics.hpp>
+
+#include "../include/GameEngine.h"
+#include "../include/GameStateInterface.h"
+#include "../include/PlayState.h"
+
+#include "../include/const.h"
+
+void GameEngine::Run() {
     std::cout << "Game Engine Initialized" << std::endl;
+    //create the window
+    sf::ContextSettings settings;
+    settings.antialiasingLevel = 8;
+    sf::RenderWindow window(sf::VideoMode(gameConstant::WINDOW_WIDTH, gameConstant::WINDOW_HEIGHT),
+                            "Poker Tower Defense", sf::Style::Titlebar | sf::Style::Close, settings);
+    //window.setMouseCursorVisible(false);
+
+    //create clock
+    sf::Clock clock;
+
+    //create the states
+    PlayState playState(window);
+
+    //push on first state
+    PushState(PlayState::getInstance());
+
+    // run the program as long as the window is open
+    while (window.isOpen()) {
+        //start game loop
+        while (running) {
+            std::cout << "game loop" << std::endl;
+            clock.restart();
+
+            Update();
+            Draw();
+
+            //limit fps
+            //TODO: Use an actual timer here instead of spinning
+            while (clock.getElapsedTime().asMilliseconds() < 1000 / gameConstant::FRAMES_PER_SECOND) {}
+        }
+    }
 }
 
 void GameEngine::Cleanup() {
     std::cout << "Game Engine Cleanup Started" << std::endl;
-    while ( !states.empty() ) {
+    while (!states.empty()) {
         states.back()->Cleanup();
         states.pop_back();
     }
 }
 
 void GameEngine::changeState(GameStateInterface *state) {
-    if ( !states.empty() ) {
+    if (!states.empty()) {
         states.back()->Cleanup();
         states.pop_back();
     }
@@ -31,7 +68,7 @@ void GameEngine::changeState(GameStateInterface *state) {
 
 void GameEngine::PushState(GameStateInterface *state) {
     // pause current state
-    if ( !states.empty() ) {
+    if (!states.empty()) {
         states.back()->Pause();
     }
 
@@ -39,43 +76,31 @@ void GameEngine::PushState(GameStateInterface *state) {
     states.push_back(state);
     states.back()->Init();
 }
-void GameEngine::PopState()
-{
+
+void GameEngine::PopState() {
     // cleanup the current state
-    if ( !states.empty() ) {
+    if (!states.empty()) {
         states.back()->Cleanup();
         states.pop_back();
     }
 
     // resume previous state
-    if ( !states.empty() ) {
+    if (!states.empty()) {
         states.back()->Resume();
     }
 }
 
-void GameEngine::HandleEvents()
-{
-    // let the state handle events
-//    states.back()->HandleEvents(this);
-}
-
-void GameEngine::Update()
-{
+void GameEngine::Update() {
     // let the state update the game
-//    states.back()->Update(this);
+    states.back()->Update(this);
 }
 
-void GameEngine::Draw()
-{
+void GameEngine::Draw() {
     // let the state draw the screen
-//    states.back()->Draw(this);
+    states.back()->Draw(this);
 }
 
-bool GameEngine::Running() {
-    return this->running;
-}
-
-void GameEngine::Quit() {
-    this->running = false;
+void GameEngine::Stop() {
+    running = false;
 }
 
