@@ -8,6 +8,6 @@ include_directories(${SFML_INCLUDE_DIR})
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(SOURCE_FILES src/main.cpp src/StateManager/GameStateInterface.cpp src/include/GameStateInterface.h src/StateManager/GameEngine.cpp src/include/GameEngine.h src/PlayState/Controller/PlayState.cpp src/include/PlayState.h src/include/const.h)
+set(SOURCE_FILES src/main.cpp src/StateManager/GameStateInterface.cpp src/include/GameStateInterface.h src/StateManager/GameEngine.cpp src/include/GameEngine.h src/PlayState/Controller/PlayState.cpp src/include/PlayState.h src/include/const.h src/PlayState/Model/PlayStateModel.cpp src/include/PlayStateModel.h src/PlayState/Draw/PlayStateDrawObject.cpp src/include/PlayStateDrawObject.h src/PlayState/Model/Terrain.cpp src/include/Terrain.h src/PlayState/TerrainTypes.h)
 add_executable(pokerTD ${SOURCE_FILES} src/main.cpp)
 target_link_libraries(pokerTD ${SFML_LIBRARIES})
