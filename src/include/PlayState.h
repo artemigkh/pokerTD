@@ -6,6 +6,8 @@
 #define POKERTD_PLAYSTATE_H
 
 #include "GameStateInterface.h"
+#include "PlayStateModel.h"
+#include "PlayStateDrawObject.h"
 
 class PlayState : public GameStateInterface{
 public:
@@ -25,9 +27,13 @@ public:
 
     void Cleanup() override;
 
+    void HandleUserInput(GameEngine *game) override;
+
 private:
     static PlayState* PlayStateInstance;
     sf::RenderWindow& window;
+    PlayStateModel *model;
+    PlayStateDrawObject *drawObject;
     int x;
     int y;
 };

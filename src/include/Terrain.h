@@ -9,10 +9,24 @@
 
 class Terrain {
 public:
-    Terrain(int x1, int y1, int y2, int x2, TerrainTypes terrainType);
+    Terrain(int x1, int y1, int x2, int y2, TerrainTypes terrainType);
 
 private:
     TerrainTypes terrainType;
+public:
+    TerrainTypes getTerrainType() const;
+
+    bool IsBuildable() const;
+
+    int getX1() const;
+
+    int getY1() const;
+
+    int getX2() const;
+
+    int getY2() const;
+
+private:
     bool isBuildable;
     /*
      * (x1,y1)------+

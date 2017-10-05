@@ -9,6 +9,7 @@
 #include <string>
 
 #include "../PlayState/TerrainTypes.h"
+#include "PlayStateDrawObject.h"
 
 
 class Terrain;
@@ -19,11 +20,11 @@ public:
     ~PlayStateModel();
     void ReceiveMouseMove(int x, int y);
     void ReceiveMouseClick(int x, int y);
-    void Draw();
+    void Draw(PlayStateDrawObject *pObject);
 
 private:
     TerrainTypes getTerrainType(std::string sample);
-    Terrain** terrainBlocks;
+    std::vector<Terrain*> terrainBlocks;
 };
 
 

@@ -23,6 +23,7 @@ public:
     void Stop();
 
 private:
+    void HandleUserInput();
     void Update();
     void Draw();
 

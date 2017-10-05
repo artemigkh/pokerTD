@@ -21,9 +21,9 @@ void PlayState::Resume() {
 
 }
 
-void PlayState::Update(GameEngine *game) {
+void PlayState::HandleUserInput(GameEngine *game) {
     // clear the window with black color
-    window.clear(sf::Color::Black);
+
 
     //check all the window's events that were triggered since the last iteration of the loop
     sf::Event event;
@@ -39,24 +39,30 @@ void PlayState::Update(GameEngine *game) {
         }
 
     }
+//
+//    sf::CircleShape shape(50);
+//    shape.setFillColor(sf::Color(150, 50, 250));
+//
+//    // set a 10-pixel wide orange outline
+//    shape.setOutlineThickness(10);
+//    shape.setOutlineColor(sf::Color(250, 150, 100));
+//
+//    shape.setPosition(x-50, y-50);
+//
+//    window.draw(shape);
+//
+//    // end the current frame
+//
+}
 
-    sf::CircleShape shape(50);
-    shape.setFillColor(sf::Color(150, 50, 250));
+void PlayState::Update(GameEngine *game) {
 
-    // set a 10-pixel wide orange outline
-    shape.setOutlineThickness(10);
-    shape.setOutlineColor(sf::Color(250, 150, 100));
-
-    shape.setPosition(x-50, y-50);
-
-    window.draw(shape);
-
-    // end the current frame
-    window.display();
 }
 
 void PlayState::Draw(GameEngine *game) {
-
+    window.clear(sf::Color::Black);
+    model->Draw(drawObject);
+    window.display();
 }
 
 void PlayState::Cleanup() {
@@ -65,8 +71,11 @@ void PlayState::Cleanup() {
 
 PlayState::PlayState(sf::RenderWindow &window) : window(window) {
     PlayStateInstance = this;
+    model = new PlayStateModel();
+    drawObject = new PlayStateDrawObject(window);
 }
 
 PlayState *PlayState::getInstance() {
     return PlayStateInstance;
 }
+

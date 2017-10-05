@@ -9,31 +9,29 @@
 
 #include "../../include/Terrain.h"
 #include "../../include/const.h"
-
+#include "../../include/PlayStateDrawObject.h"
 
 PlayStateModel::PlayStateModel() {
-    //create all terrain blocks
-    terrainBlocks = new Terrain *[gameConstant::NUM_SQUARES_WIDE * gameConstant::NUM_SQUARES_HIGH];
     //open map file to read from
     std::ifstream mapReader;
-    mapReader.open("../../config/maps/easy.map");
+    mapReader.open("config/maps/easy.map");
 
-    if (!mapReader) {
+    //read in terrain from file
+    if (mapReader.fail()) {
         std::cerr << "Could not open file easy.map" << std::endl;
     } else {
         //TODO: add in checking for badly formed map files
         //generate blocks
         int i = 0;
-        for (int x_pos = 0; x_pos < gameConstant::NUM_SQUARES_WIDE; x_pos++) {
-            for (int y_pos = 0; y_pos < gameConstant::NUM_SQUARES_HIGH; y_pos++) {
-                std::cout << "creating terrain with position " << x_pos * gameConstant::SQUARE_WIDTH << ", " << y_pos * gameConstant::SQUARE_HEIGHT << std::endl;
+        for (int y_pos = 0; y_pos < gameConstant::NUM_SQUARES_WIDE; y_pos++) {
+            for (int x_pos = 0; x_pos < gameConstant::NUM_SQUARES_HIGH; x_pos++) {
                 std::string temp;
                 mapReader >> temp;
-                terrainBlocks[i] = new Terrain(x_pos * gameConstant::SQUARE_WIDTH,
+                terrainBlocks.push_back(new Terrain(x_pos * gameConstant::SQUARE_WIDTH,
                                                y_pos * gameConstant::SQUARE_HEIGHT,
                                                (x_pos + 1) * gameConstant::SQUARE_WIDTH,
                                                (y_pos + 1) * gameConstant::SQUARE_HEIGHT,
-                                               getTerrainType(temp));
+                                               getTerrainType(temp)));
                 i++;
             }
         }
@@ -41,7 +39,10 @@ PlayStateModel::PlayStateModel() {
 }
 
 PlayStateModel::~PlayStateModel() {
-
+    while (!terrainBlocks.empty()) {
+        delete terrainBlocks.back();
+        terrainBlocks.pop_back();
+    }
 }
 
 void PlayStateModel::ReceiveMouseMove(int x, int y) {
@@ -52,8 +53,8 @@ void PlayStateModel::ReceiveMouseClick(int x, int y) {
 
 }
 
-void PlayStateModel::Draw() {
-
+void PlayStateModel::Draw(PlayStateDrawObject *pObject) {
+    pObject->DrawTerrain(terrainBlocks);
 }
 
 TerrainTypes PlayStateModel::getTerrainType(std::string sample) {

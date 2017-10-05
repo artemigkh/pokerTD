@@ -17,6 +17,7 @@ public:
     virtual void Pause() = 0;
     virtual void Resume() = 0;
 
+    virtual void HandleUserInput(GameEngine* game) = 0;
     virtual void Update(GameEngine* game) = 0;
     virtual void Draw(GameEngine* game) = 0;
 

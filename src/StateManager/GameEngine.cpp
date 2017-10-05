@@ -35,9 +35,9 @@ void GameEngine::Run() {
     while (window.isOpen()) {
         //start game loop
         while (running) {
-            std::cout << "game loop" << std::endl;
             clock.restart();
 
+            HandleUserInput();
             Update();
             Draw();
 
@@ -102,5 +102,9 @@ void GameEngine::Draw() {
 
 void GameEngine::Stop() {
     running = false;
+}
+
+void GameEngine::HandleUserInput() {
+    states.back()->HandleUserInput(this);
 }
 
