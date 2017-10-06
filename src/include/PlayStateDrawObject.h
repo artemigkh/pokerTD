@@ -16,8 +16,7 @@
 class PlayStateDrawObject {
 public:
     PlayStateDrawObject(sf::RenderWindow &window);
-
-    void DrawTerrain(std::vector<Terrain *> terrainBlocks);
+    void DrawTerrain(std::vector<Terrain> terrainBlocks);
 
 private:
     sf::RenderWindow& window;

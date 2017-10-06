@@ -10,7 +10,8 @@
 
 #include "../PlayState/TerrainTypes.h"
 #include "PlayStateDrawObject.h"
-
+#include "Terrain.h"
+#include "Wave.h"
 
 class Terrain;
 
@@ -23,8 +24,12 @@ public:
     void Draw(PlayStateDrawObject *pObject);
 
 private:
+    void LoadTerrain();
+    void LoadWaveInformation();
+
     TerrainTypes getTerrainType(std::string sample);
-    std::vector<Terrain*> terrainBlocks;
+    std::vector<Terrain> terrainBlocks;
+    std::vector<Wave> waves;
 };
 
 

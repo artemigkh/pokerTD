@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+    size: size in pixels (max 100, anything higher will be set to 100)
+    speed: move speed in pixels/second
+    density: number of units per grid square
+    everything else is self explanatory
+-->
+<waves>
+    <wave>
+        <number>1</number>
+        <units>
+            <unit>
+                <name>Sheep</name>
+                <description>A slow and weak enemy</description>
+                <number>10</number>
+                <hp>10</hp>
+                <size>30</size>
+                <speed>200</speed>
+                <density>5</density>
+            </unit>
+        </units>
+        <successMessage>You did it!</successMessage>
+    </wave>
+</waves>

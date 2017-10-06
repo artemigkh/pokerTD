@@ -1,8 +1,8 @@
-tl -  br g  bl -  - tr
-|  g  g  g  g  g  g |
-|  g  tl -  -  tr g |
-bl -  br g  g  |  g |
-g  g  g  g  g  |  g |
-tl -  -  -  -  br g |
-|  g  g  g  g  g  g |
-bl -  -  -  -  -  - br
+g g | g g | g g
+tl - br g g bl - tr
+| g g g g g g |
+bl - - tr g g g |
+g g g | g g g |
+g tl - br g g g |
+g | g g g g g |
+g bl - - - - - br

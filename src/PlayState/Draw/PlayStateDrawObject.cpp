@@ -41,41 +41,41 @@ PlayStateDrawObject::PlayStateDrawObject(sf::RenderWindow &window) : window(wind
     undefinedTerrainSprite.setTexture(undefinedTexture);
 }
 
-void PlayStateDrawObject::DrawTerrain(std::vector<Terrain *> terrainBlocks) {
+void PlayStateDrawObject::DrawTerrain(std::vector<Terrain> terrainBlocks) {
 
     //iterate through every terrain block
-    for (std::vector<Terrain *>::iterator it = terrainBlocks.begin(); it != terrainBlocks.end(); ++it) {
-        switch((*it)->getTerrainType()){
+    for (std::vector<Terrain>::iterator it = terrainBlocks.begin(); it != terrainBlocks.end(); ++it) {
+        switch((*it).getTerrainType()){
             case CORNER_TOP_LEFT:
-                cornerTopLeftTerrainSprite.setPosition((*it)->getX1(),(*it)->getY1());
+                cornerTopLeftTerrainSprite.setPosition((*it).getX1(),(*it).getY1());
                 window.draw(cornerTopLeftTerrainSprite);
                 break;
             case CORNER_TOP_RIGHT:
-                cornerTopRightTerrainSprite.setPosition((*it)->getX1(),(*it)->getY1());
+                cornerTopRightTerrainSprite.setPosition((*it).getX1(),(*it).getY1());
                 window.draw(cornerTopRightTerrainSprite);
                 break;
             case CORNER_BOTTOM_LEFT:
-                cornerBottomLeftTerrainSprite.setPosition((*it)->getX1(),(*it)->getY1());
+                cornerBottomLeftTerrainSprite.setPosition((*it).getX1(),(*it).getY1());
                 window.draw(cornerBottomLeftTerrainSprite);
                 break;
             case CORNER_BOTTOM_RIGHT:
-                cornerBottomRightTerrainSprite.setPosition((*it)->getX1(),(*it)->getY1());
+                cornerBottomRightTerrainSprite.setPosition((*it).getX1(),(*it).getY1());
                 window.draw(cornerBottomRightTerrainSprite);
                 break;
             case VERTICAL:
-                verticalTerrainSprite.setPosition((*it)->getX1(),(*it)->getY1());
+                verticalTerrainSprite.setPosition((*it).getX1(),(*it).getY1());
                 window.draw(verticalTerrainSprite);
                 break;
             case HORIZONTAL:
-                horizontalTerrainSprite.setPosition((*it)->getX1(),(*it)->getY1());
+                horizontalTerrainSprite.setPosition((*it).getX1(),(*it).getY1());
                 window.draw(horizontalTerrainSprite);
                 break;
             case BUILDABLE:
-                buildableTerrainSprite.setPosition((*it)->getX1(),(*it)->getY1());
+                buildableTerrainSprite.setPosition((*it).getX1(),(*it).getY1());
                 window.draw(buildableTerrainSprite);
                 break;
             default:
-                undefinedTerrainSprite.setPosition((*it)->getX1(),(*it)->getY1());
+                undefinedTerrainSprite.setPosition((*it).getX1(),(*it).getY1());
                 window.draw(undefinedTerrainSprite);
                 break;
         }
