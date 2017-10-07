@@ -11,14 +11,14 @@
 #include "../include/GameStateInterface.h"
 #include "../include/PlayState.h"
 
-#include "../include/const.h"
+#include "../include/GameConstants.h"
 
 void GameEngine::Run() {
     std::cout << "Game Engine Initialized" << std::endl;
     //create the window
     sf::ContextSettings settings;
     settings.antialiasingLevel = 8;
-    sf::RenderWindow window(sf::VideoMode(gameConstant::WINDOW_WIDTH, gameConstant::WINDOW_HEIGHT),
+    sf::RenderWindow window(sf::VideoMode(gac::WINDOW_WIDTH, gac::WINDOW_HEIGHT),
                             "Poker Tower Defense", sf::Style::Titlebar | sf::Style::Close, settings);
     //window.setMouseCursorVisible(false);
 
@@ -43,7 +43,7 @@ void GameEngine::Run() {
 
             //limit fps
             //TODO: Use an actual timer here instead of spinning
-            while (clock.getElapsedTime().asMilliseconds() < 1000 / gameConstant::FRAMES_PER_SECOND) {}
+            while (clock.getElapsedTime().asMilliseconds() < 1000 / gac::FRAMES_PER_SECOND) {}
         }
     }
 }

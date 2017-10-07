@@ -21,6 +21,12 @@ void PlayState::Resume() {
 
 }
 
+
+void PlayState::Update(GameEngine *game) {
+
+}
+
+
 void PlayState::HandleUserInput(GameEngine *game) {
     // clear the window with black color
 
@@ -53,10 +59,6 @@ void PlayState::HandleUserInput(GameEngine *game) {
 //
 //    // end the current frame
 //
-}
-
-void PlayState::Update(GameEngine *game) {
-
 }
 
 void PlayState::Draw(GameEngine *game) {

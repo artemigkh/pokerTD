@@ -16,6 +16,9 @@ Wave::Wave(int number, const std::string &successMessage, tinyxml2::XMLElement *
                                   std::atoi(unit->FirstChildElement("hp")->GetText()),
                                   std::atoi(unit->FirstChildElement("size")->GetText()),
                                   std::atoi(unit->FirstChildElement("speed")->GetText()),
-                                  std::atoi(unit->FirstChildElement("density")->GetText())));
+                                  std::atoi(unit->FirstChildElement("density")->GetText()),
+                                  std::atoi(unit->FirstChildElement("id")->GetText()),
+                                  std::atoi(unit->FirstChildElement("offsetx")->GetText()),
+                                  std::atoi(unit->FirstChildElement("offsety")->GetText())));
     }
 }

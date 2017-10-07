@@ -10,7 +10,7 @@
 
 #include "../../../lib/tinyxml2.h"
 
-#include "../../include/const.h"
+#include "../../include/GameConstants.h"
 #include "../../include/PlayStateDrawObject.h"
 
 PlayStateModel::PlayStateModel() {
@@ -65,14 +65,14 @@ void PlayStateModel::LoadTerrain() {
         //TODO: add in checking for badly formed map files
         //generate blocks
         int i = 0;
-        for (int y_pos = 0; y_pos < gameConstant::NUM_SQUARES_WIDE; y_pos++) {
-            for (int x_pos = 0; x_pos < gameConstant::NUM_SQUARES_HIGH; x_pos++) {
+        for (int y_pos = 0; y_pos < gac::NUM_SQUARES_WIDE; y_pos++) {
+            for (int x_pos = 0; x_pos < gac::NUM_SQUARES_HIGH; x_pos++) {
                 std::string temp;
                 mapReader >> temp;
-                terrainBlocks.push_back(Terrain(x_pos * gameConstant::SQUARE_WIDTH,
-                                                y_pos * gameConstant::SQUARE_HEIGHT,
-                                                (x_pos + 1) * gameConstant::SQUARE_WIDTH,
-                                                (y_pos + 1) * gameConstant::SQUARE_HEIGHT,
+                terrainBlocks.push_back(Terrain(x_pos * gac::SQUARE_WIDTH,
+                                                y_pos * gac::SQUARE_HEIGHT,
+                                                (x_pos + 1) * gac::SQUARE_WIDTH,
+                                                (y_pos + 1) * gac::SQUARE_HEIGHT,
                                                 getTerrainType(temp)));
                 i++;
             }
@@ -95,4 +95,8 @@ void PlayStateModel::LoadWaveInformation() {
                                  wave->FirstChildElement("units")));
         }
     }
+}
+
+void PlayStateModel::Update() {
+
 }

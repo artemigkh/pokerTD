@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+    id = the same id as the one referenced in the levels config file. Must be an integer
+-->
+<spriteSheets>
+    <spriteSheet>
+        <filename>sheep_sprite_sheet.png</filename>
+        <id>0</id>
+    </spriteSheet>
+</spriteSheets>

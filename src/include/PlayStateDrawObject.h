@@ -6,19 +6,25 @@
 #define POKERTD_PLAYSTATEDRAWOBJECT_H
 
 #include <vector>
+#include <map>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Graphics/Texture.hpp>
 #include <SFML/Graphics/Sprite.hpp>
 
 #include "../include/Terrain.h"
+#include "SpriteDrawObject.h"
 
 
 class PlayStateDrawObject {
 public:
     PlayStateDrawObject(sf::RenderWindow &window);
+    ~PlayStateDrawObject();
     void DrawTerrain(std::vector<Terrain> terrainBlocks);
 
 private:
+    void LoadTerrainTextures();
+    void LoadUnitSpriteSheets();
+
     sf::RenderWindow& window;
 
     sf::Texture buildableTexture;
@@ -36,6 +42,8 @@ private:
 
     sf::Texture undefinedTexture;
     sf::Sprite undefinedTerrainSprite;
+
+    std::map<int, SpriteDrawObject*> unitDrawers;
 };
 
 

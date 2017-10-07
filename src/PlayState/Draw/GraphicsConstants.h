@@ -1,0 +1,17 @@
+//
+// Created by Artem on 10/6/2017.
+//
+
+#ifndef POKERTD_GRAPHICSCONSTANTS_H
+#define POKERTD_GRAPHICSCONSTANTS_H
+
+namespace grc{
+    const int SPRITE_HEIGHT = 48;
+    const int SPRITE_WIDTH = 48;
+    const int SPRITE_SHEET_NUM_X = 3;
+    const int SPRITE_SHEET_NUM_Y = 4;
+    const int SPRITE_SHEET_GROUP_HEIGHT = SPRITE_HEIGHT * SPRITE_SHEET_NUM_Y;
+    const int SPRITE_SHEET_GROUP_WIDTH = SPRITE_WIDTH * SPRITE_SHEET_NUM_X;
+}
+
+#endif //POKERTD_GRAPHICSCONSTANTS_H

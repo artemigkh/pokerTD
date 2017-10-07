@@ -10,7 +10,7 @@
 class WaveUnits {
 public:
     WaveUnits(const std::string &name, const std::string &description, int number, int hp, int size, int speed,
-              int density);
+              int density, int id, int xOffset, int yOffset);
 
 private:
     std::string name;
@@ -20,6 +20,9 @@ private:
     int size;
     int speed;
     int density;
+    int id;
+    int xOffset;
+    int yOffset;
 };
 
 

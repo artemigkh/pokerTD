@@ -5,7 +5,7 @@
 #ifndef POKERTD_CONST_H
 #define POKERTD_CONST_H
 
-namespace gameConstant{
+namespace gac{
     const int WINDOW_HEIGHT = 1000;
     const int WINDOW_WIDTH = 1000;
     const int NUM_SQUARES_HIGH = 8;

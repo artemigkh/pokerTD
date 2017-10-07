@@ -4,6 +4,9 @@
     speed: move speed in pixels/second
     density: number of units per grid square
     everything else is self explanatory
+    id = same id as the one defined in config/graphics/sprite_sheets.xml
+    offsetx/y: the offset in the sprite sheet from the top left in number of groups.
+    For example, in the sheep spritesheet the orange sheep would have x offset 3 and y offset 1 (counting starts at 0)
 -->
 <waves>
     <wave>
@@ -17,6 +20,9 @@
                 <size>30</size>
                 <speed>200</speed>
                 <density>5</density>
+                <id>0</id>
+                <offsetx>0</offsetx>
+                <offsety>0</offsety>
             </unit>
         </units>
         <successMessage>You did it!</successMessage>

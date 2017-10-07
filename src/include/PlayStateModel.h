@@ -22,6 +22,7 @@ public:
     void ReceiveMouseMove(int x, int y);
     void ReceiveMouseClick(int x, int y);
     void Draw(PlayStateDrawObject *pObject);
+    void Update();
 
 private:
     void LoadTerrain();
