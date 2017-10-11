@@ -12,6 +12,7 @@
 #include "PlayStateDrawObject.h"
 #include "Terrain.h"
 #include "Wave.h"
+#include "Unit.h"
 
 class Terrain;
 
@@ -27,8 +28,9 @@ public:
 private:
     void LoadTerrain();
     void LoadWaveInformation();
-
     TerrainTypes getTerrainType(std::string sample);
+
+    std::vector<Unit> units;
     std::vector<Terrain> terrainBlocks;
     std::vector<Wave> waves;
 };

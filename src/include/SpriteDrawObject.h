@@ -14,8 +14,8 @@ public:
     SpriteDrawObject(sf::RenderWindow &window, std::string fileName);
 
     //orientation: 0: down, 1: left, 2: right, 3: up
-    void Draw(int windowPosX, int windowPosY, int windowSizeWidth, int windowSizeHeight, int groupOffsetX,
-              int groupOffsetY, int orientation, int frame);
+    void Draw(float windowPosX, float windowPosY, int windowSizeWidth, int windowSizeHeight, int groupOffsetX,
+              int groupOffsetY, int frame, int orientation);
 private:
     int getXofSpriteSheet(int groupOffsetX, int frame);
     int getYofSpriteSheet(int groupOffsetY, int orientation);

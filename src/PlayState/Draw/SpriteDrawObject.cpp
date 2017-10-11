@@ -17,8 +17,8 @@ SpriteDrawObject::SpriteDrawObject(sf::RenderWindow &window, std::string fileNam
 }
 
 void
-SpriteDrawObject::Draw(int windowPosX, int windowPosY, int windowSizeWidth, int windowSizeHeight, int groupOffsetX,
-                       int groupOffsetY, int orientation, int frame) {
+SpriteDrawObject::Draw(float windowPosX, float windowPosY, int windowSizeWidth, int windowSizeHeight, int groupOffsetX,
+                       int groupOffsetY, int frame, int orientation) {
     sf::Sprite drawingSprite;
     drawingSprite.setTexture(spriteSheet);
     drawingSprite.setTextureRect(sf::IntRect(getXofSpriteSheet(groupOffsetX, frame),

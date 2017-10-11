@@ -13,6 +13,7 @@
 
 #include "../include/Terrain.h"
 #include "SpriteDrawObject.h"
+#include "Unit.h"
 
 
 class PlayStateDrawObject {
@@ -20,6 +21,7 @@ public:
     PlayStateDrawObject(sf::RenderWindow &window);
     ~PlayStateDrawObject();
     void DrawTerrain(std::vector<Terrain> terrainBlocks);
+    void DrawUnits(std::vector<Unit> units);
 
 private:
     void LoadTerrainTextures();

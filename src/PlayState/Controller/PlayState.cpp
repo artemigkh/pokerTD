@@ -23,9 +23,8 @@ void PlayState::Resume() {
 
 
 void PlayState::Update(GameEngine *game) {
-
+    model->Update();
 }
-
 
 void PlayState::HandleUserInput(GameEngine *game) {
     // clear the window with black color

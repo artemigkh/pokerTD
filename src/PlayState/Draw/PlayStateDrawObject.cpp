@@ -108,3 +108,18 @@ void PlayStateDrawObject::LoadUnitSpriteSheets() {
 PlayStateDrawObject::~PlayStateDrawObject() {
     //TODO: delete pointers in unitDrawers
 }
+
+void PlayStateDrawObject::DrawUnits(std::vector<Unit> units) {
+    for (std::vector<Unit>::iterator it = units.begin(); it != units.end(); ++it) {
+        Unit unit = (*it);
+        unitDrawers[unit.getSpriteSheetID()]->Draw(unit.getCurrPosX(),
+                                                   unit.getCurrPosY(),
+                                                   unit.getSize(),
+                                                   unit.getSize(),
+                                                   unit.getSpriteSheetOffsetX(),
+                                                   unit.getSpriteSheetOffsetY(),
+                                                   unit.getFramePos(),
+                                                   unit.getOrientation()
+        );
+    }
+}
