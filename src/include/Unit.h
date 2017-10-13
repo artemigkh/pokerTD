@@ -6,13 +6,18 @@
 #define POKERTD_UNIT_H
 
 #include<string>
+#include "PlayStateModel.h"
+#include "../PlayState/TerrainTypes.h"
+
+class PlayStateModel;
 
 class Unit {
 public:
     Unit(const std::string &name, const std::string &description, int currHP, int size, int speed, float currPosX,
-         float currPosY, int orientation, int spriteSheetID, int spriteSheetOffsetX, int spriteSheetOffsetY);
+         float currPosY, int terrainX, int terrainY, int orientation, int spriteSheetID, int spriteSheetOffsetX,
+         int spriteSheetOffsetY);
 
-    void Update();
+    void Update(PlayStateModel* playStateModel);
 
     const std::string &getName() const;
     const std::string &getDescription() const;
@@ -24,20 +29,21 @@ public:
     int getSpriteSheetOffsetY() const;
     float getCurrPosX() const;
     float getCurrPosY() const;
+    int getSize() const;
 
 private:
+    int getNewDirection(TerrainTypes terrain, int orientation);
+
     std::string name;
     std::string description;
 
     int currHP;
     int size;
-public:
-    int getSize() const;
-
-private:
     int speed;
     float currPosX;
     float currPosY;
+    int terrainX;
+    int terrainY;
 
     int orientation;
     int framePosCounter;

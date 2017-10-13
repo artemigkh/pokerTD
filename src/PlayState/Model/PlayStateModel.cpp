@@ -16,7 +16,7 @@
 PlayStateModel::PlayStateModel() {
     LoadTerrain();
     LoadWaveInformation();
-    units.push_back(Unit("sheep", "sheepDesc", 10, 48, 200, 0, 500, 2, 0, 0, 0));
+    units.push_back(Unit("sheep", "sheepDesc", 10, 48, 200, 312.5, 0, 2, 0, 0, 0, 0, 0));
 }
 
 void PlayStateModel::Draw(PlayStateDrawObject *pObject) {
@@ -102,6 +102,10 @@ void PlayStateModel::LoadWaveInformation() {
 void PlayStateModel::Update() {
     //update unit movement
     for(std::vector<Unit>::iterator it = units.begin(); it != units.end(); ++it){
-        (*it).Update();
+        (*it).Update(this);
     }
+}
+
+const std::vector<Terrain> &PlayStateModel::getTerrainBlocks() const {
+    return terrainBlocks;
 }

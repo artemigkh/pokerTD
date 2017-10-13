@@ -14,7 +14,8 @@
 #include "Wave.h"
 #include "Unit.h"
 
-class Terrain;
+class Unit;
+class PlayStateDrawObject;
 
 class PlayStateModel {
 public:
@@ -24,6 +25,7 @@ public:
     void ReceiveMouseClick(int x, int y);
     void Draw(PlayStateDrawObject *pObject);
     void Update();
+    const std::vector<Terrain> &getTerrainBlocks() const;
 
 private:
     void LoadTerrain();

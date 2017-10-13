@@ -24,7 +24,7 @@ SpriteDrawObject::Draw(float windowPosX, float windowPosY, int windowSizeWidth, 
     drawingSprite.setTextureRect(sf::IntRect(getXofSpriteSheet(groupOffsetX, frame),
                                              getYofSpriteSheet(groupOffsetY, orientation),
                                              grc::SPRITE_WIDTH, grc::SPRITE_HEIGHT));
-    drawingSprite.setPosition(windowPosX, windowPosY);
+    drawingSprite.setPosition(windowPosX - (float)windowSizeWidth / 2, windowPosY - (float)windowSizeHeight / 2);
     //TODO: set scaling factor by using width and height
     window.draw(drawingSprite);
 }
