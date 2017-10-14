@@ -17,6 +17,14 @@ public:
 
 private:
     int number;
+public:
+    int getNumber() const;
+
+    const std::string &getSuccessMessage() const;
+
+    const std::vector<WaveUnits> &getUnits() const;
+
+private:
     std::string successMessage;
     std::vector<WaveUnits> units;
 };

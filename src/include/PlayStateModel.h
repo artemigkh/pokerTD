@@ -30,6 +30,7 @@ public:
 private:
     void LoadTerrain();
     void LoadWaveInformation();
+    void StartWave(int waveNumber);
     TerrainTypes getTerrainType(std::string sample);
 
     std::vector<Unit> units;

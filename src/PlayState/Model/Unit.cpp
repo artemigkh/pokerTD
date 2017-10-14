@@ -21,7 +21,6 @@ void Unit::Update(PlayStateModel *playStateModel) {
             break;
         case 1: // left
             currPosX -= tickMoveSpeed;
-            std::cerr << currPosX << std::endl;
             if (currPosX < (gac::SQUARE_WIDTH_FLOAT * ((float) terrainX - 1)) + (gac::SQUARE_WIDTH_FLOAT / 2)) {
                 terrainX--;
                 orientation = getNewDirection(playStateModel->getTerrainBlocks()[terrainX + terrainY * gac::NUM_SQUARES_WIDE].getTerrainType(), orientation);
@@ -111,9 +110,6 @@ int Unit::getNewDirection(TerrainTypes terrain, int orientation) {
                 return 0;
             }
             else{
-                std::cerr << "Unit Orientation: " << orientation << std::endl;
-                std::cerr << "Terrain Type: " << CORNER_TOP_LEFT <<std::endl;
-                std::cerr << "Unit is entering terrain not in an entrance" << std::endl;
                 return orientation;
             }
         case CORNER_TOP_RIGHT:
@@ -124,9 +120,6 @@ int Unit::getNewDirection(TerrainTypes terrain, int orientation) {
                 return 1;
             }
             else{
-                std::cerr << "Unit Orientation: " << orientation << std::endl;
-                std::cerr << "Terrain Type: " << CORNER_TOP_RIGHT <<std::endl;
-                std::cerr << "Unit is entering terrain not in an entrance" << std::endl;
                 return orientation;
             }
         case CORNER_BOTTOM_LEFT:
@@ -137,9 +130,6 @@ int Unit::getNewDirection(TerrainTypes terrain, int orientation) {
                 return 3;
             }
             else{
-                std::cerr << "Unit Orientation: " << orientation << std::endl;
-                std::cerr << "Terrain Type: " << CORNER_BOTTOM_LEFT <<std::endl;
-                std::cerr << "Unit is entering terrain not in an entrance" << std::endl;
                 return orientation;
             }
         case CORNER_BOTTOM_RIGHT:
@@ -150,9 +140,6 @@ int Unit::getNewDirection(TerrainTypes terrain, int orientation) {
                 return 1;
             }
             else{
-                std::cerr << "Unit Orientation: " << orientation << std::endl;
-                std::cerr << "Terrain Type: " << CORNER_BOTTOM_RIGHT <<std::endl;
-                std::cerr << "Unit is entering terrain not in an entrance" << std::endl;
                 return orientation;
             }
         case VERTICAL:
@@ -163,9 +150,6 @@ int Unit::getNewDirection(TerrainTypes terrain, int orientation) {
                 return 3;
             }
             else{
-                std::cerr << "Unit Orientation: " << orientation << std::endl;
-                std::cerr << "Terrain Type: " << VERTICAL <<std::endl;
-                std::cerr << "Unit is entering terrain not in an entrance" << std::endl;
                 return orientation;
             }
         case HORIZONTAL:
@@ -176,14 +160,9 @@ int Unit::getNewDirection(TerrainTypes terrain, int orientation) {
                 return 2;
             }
             else{
-                std::cerr << "Unit Orientation: " << orientation << std::endl;
-                std::cerr << "Terrain Type: " << HORIZONTAL <<std::endl;
-                std::cerr << "Unit is entering terrain not in an entrance" << std::endl;
                 return orientation;
             }
         default:
-            std::cerr << "Terrain Type: " << terrain <<std::endl;
-            std::cerr << "Unit is attempting to enter unpassable terrain" << std::endl;
             return orientation;
     }
 }

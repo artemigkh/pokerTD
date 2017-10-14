@@ -16,12 +16,36 @@
 PlayStateModel::PlayStateModel() {
     LoadTerrain();
     LoadWaveInformation();
-    units.push_back(Unit("sheep", "sheepDesc", 10, 48, 200, 312.5, 0, 2, 0, 0, 0, 0, 0));
+    StartWave(0);
+//    units.push_back(Unit("sheep", "sheepDesc", 10, 48, 200, 312.5, 0, 2, 0, 0, 0, 0, 0));
+//    units.push_back(Unit("sheep", "sheepDesc", 10, 48, 200, 312.5, -50, 2, 0, 0, 0, 0, 0));
 }
 
 void PlayStateModel::Draw(PlayStateDrawObject *pObject) {
     pObject->DrawTerrain(terrainBlocks);
     pObject->DrawUnits(units);
+}
+
+
+void PlayStateModel::StartWave(int waveNumber) {
+    //TODO: multiple kinds of units in wave
+    //TODO: make xml for map with start, end, and starting orientation
+    //TODO: make density do what it says it does
+    //TODO: probably put this in a subroutine to keep well named functions clean
+    WaveUnits waveUnit = waves[waveNumber].getUnits()[0];
+    int numUnits = waveUnit.getNumber();
+    for (int i = 0; i < numUnits; i++) {
+        units.push_back(Unit(waveUnit.getName(),
+                             waveUnit.getDescription(),
+                             waveUnit.getHp(),
+                             waveUnit.getSize(),
+                             waveUnit.getSpeed(),
+                             312.5, 0  - i * waveUnit.getDensity(), 2, 0, 0,
+                             waveUnit.getId(),
+                             waveUnit.getXOffset(),
+                             waveUnit.getYOffset()
+        ));
+    }
 }
 
 PlayStateModel::~PlayStateModel() {
@@ -101,7 +125,7 @@ void PlayStateModel::LoadWaveInformation() {
 
 void PlayStateModel::Update() {
     //update unit movement
-    for(std::vector<Unit>::iterator it = units.begin(); it != units.end(); ++it){
+    for (std::vector<Unit>::iterator it = units.begin(); it != units.end(); ++it) {
         (*it).Update(this);
     }
 }
@@ -109,3 +133,4 @@ void PlayStateModel::Update() {
 const std::vector<Terrain> &PlayStateModel::getTerrainBlocks() const {
     return terrainBlocks;
 }
+

@@ -22,3 +22,15 @@ Wave::Wave(int number, const std::string &successMessage, tinyxml2::XMLElement *
                                   std::atoi(unit->FirstChildElement("offsety")->GetText())));
     }
 }
+
+int Wave::getNumber() const {
+    return number;
+}
+
+const std::string &Wave::getSuccessMessage() const {
+    return successMessage;
+}
+
+const std::vector<WaveUnits> &Wave::getUnits() const {
+    return units;
+}
