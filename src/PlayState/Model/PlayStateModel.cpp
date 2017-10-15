@@ -21,9 +21,10 @@ PlayStateModel::PlayStateModel() {
 //    units.push_back(Unit("sheep", "sheepDesc", 10, 48, 200, 312.5, -50, 2, 0, 0, 0, 0, 0));
 }
 
-void PlayStateModel::Draw(PlayStateDrawObject *pObject) {
-    pObject->DrawTerrain(terrainBlocks);
-    pObject->DrawUnits(units);
+void PlayStateModel::Draw(PlayStateDrawObject *drawObject) {
+    drawObject->DrawTerrain(terrainBlocks);
+    drawObject->DrawUnits(units);
+    drawObject->DrawTowerMenu();
 }
 
 

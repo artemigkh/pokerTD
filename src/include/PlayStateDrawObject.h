@@ -14,7 +14,8 @@
 #include "../include/Terrain.h"
 #include "SpriteDrawObject.h"
 #include "Unit.h"
-
+#include "TowerMenuDrawer.h"
+//TODO: refactor terrain part into a terrain drawer class
 
 class PlayStateDrawObject {
 public:
@@ -22,10 +23,11 @@ public:
     ~PlayStateDrawObject();
     void DrawTerrain(std::vector<Terrain> terrainBlocks);
     void DrawUnits(std::vector<Unit> units);
+    void DrawTowerMenu();
 
 private:
     void LoadTerrainTextures();
-    void LoadUnitSpriteSheets();
+    void CreateUnitDrawers();
 
     sf::RenderWindow& window;
 
@@ -46,6 +48,7 @@ private:
     sf::Sprite undefinedTerrainSprite;
 
     std::map<int, SpriteDrawObject*> unitDrawers;
+    TowerMenuDrawer towerMenuDrawer;
 };
 
 

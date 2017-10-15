@@ -11,9 +11,9 @@
 #include "../TerrainTypes.h"
 #include "../../include/GameConstants.h"
 
-PlayStateDrawObject::PlayStateDrawObject(sf::RenderWindow &window) : window(window) {
+PlayStateDrawObject::PlayStateDrawObject(sf::RenderWindow &window) : window(window), towerMenuDrawer(window) {
     LoadTerrainTextures();
-    LoadUnitSpriteSheets();
+    CreateUnitDrawers();
 }
 
 void PlayStateDrawObject::DrawTerrain(std::vector<Terrain> terrainBlocks) {
@@ -89,7 +89,7 @@ void PlayStateDrawObject::LoadTerrainTextures() {
     undefinedTerrainSprite.setTexture(undefinedTexture);
 }
 
-void PlayStateDrawObject::LoadUnitSpriteSheets() {
+void PlayStateDrawObject::CreateUnitDrawers() {
     //TODO: dont crash on invalid xml
     tinyxml2::XMLDocument doc;
     if (doc.LoadFile("config/graphics/sprite_sheets.xml")) {
@@ -123,3 +123,8 @@ void PlayStateDrawObject::DrawUnits(std::vector<Unit> units) {
         );
     }
 }
+
+void PlayStateDrawObject::DrawTowerMenu() {
+    towerMenuDrawer.Draw();
+}
+

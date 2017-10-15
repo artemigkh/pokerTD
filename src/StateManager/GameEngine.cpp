@@ -12,13 +12,15 @@
 #include "../include/PlayState.h"
 
 #include "../include/GameConstants.h"
+#include "../PlayState/Draw/GraphicsConstants.h"
+#include "../PlayState/Draw/GraphicsConstants.h"
 
 void GameEngine::Run() {
     std::cout << "Game Engine Initialized" << std::endl;
     //create the window
     sf::ContextSettings settings;
     settings.antialiasingLevel = 8;
-    sf::RenderWindow window(sf::VideoMode(gac::WINDOW_WIDTH, gac::WINDOW_HEIGHT),
+    sf::RenderWindow window(sf::VideoMode(gac::WINDOW_WIDTH + grc::TOWER_WINDOW_WIDTH, grc::TOWER_WINDOW_HEIGHT),
                             "Poker Tower Defense", sf::Style::Titlebar | sf::Style::Close, settings);
     //window.setMouseCursorVisible(false);
 

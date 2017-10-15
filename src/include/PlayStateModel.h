@@ -23,7 +23,7 @@ public:
     ~PlayStateModel();
     void ReceiveMouseMove(int x, int y);
     void ReceiveMouseClick(int x, int y);
-    void Draw(PlayStateDrawObject *pObject);
+    void Draw(PlayStateDrawObject *drawObject);
     void Update();
     const std::vector<Terrain> &getTerrainBlocks() const;
 

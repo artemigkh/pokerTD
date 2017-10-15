@@ -14,6 +14,9 @@ namespace grc{
     const int SPRITE_SHEET_GROUP_WIDTH = SPRITE_WIDTH * SPRITE_SHEET_NUM_X;
 
     const int NUM_TICKS_IN_SPRITE_FRAME = 10;
+
+    const int TOWER_WINDOW_WIDTH = 300;
+    const int TOWER_WINDOW_HEIGHT = 1100;
 }
 
 #endif //POKERTD_GRAPHICSCONSTANTS_H

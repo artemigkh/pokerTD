@@ -27,9 +27,6 @@ void PlayState::Update(GameEngine *game) {
 }
 
 void PlayState::HandleUserInput(GameEngine *game) {
-    // clear the window with black color
-
-
     //check all the window's events that were triggered since the last iteration of the loop
     sf::Event event;
     while (window.pollEvent(event)) {
