@@ -21,6 +21,9 @@ private:
 
     sf::Texture menuBackgroundTexture;
     sf::Sprite menuBackgroundSprite;
+
+    sf::Texture unknownTowerIcon;
+    sf::Sprite unknownTowerSprite;
 };
 
 
