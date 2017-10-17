@@ -16,6 +16,7 @@
 PlayStateModel::PlayStateModel() {
     LoadTerrain();
     LoadWaveInformation();
+    LoadTowerInformation();
     StartWave(0);
 //    units.push_back(Unit("sheep", "sheepDesc", 10, 48, 200, 312.5, 0, 2, 0, 0, 0, 0, 0));
 //    units.push_back(Unit("sheep", "sheepDesc", 10, 48, 200, 312.5, -50, 2, 0, 0, 0, 0, 0));
@@ -24,7 +25,7 @@ PlayStateModel::PlayStateModel() {
 void PlayStateModel::Draw(PlayStateDrawObject *drawObject) {
     drawObject->DrawTerrain(terrainBlocks);
     drawObject->DrawUnits(units);
-    drawObject->DrawTowerMenu();
+    drawObject->DrawTowerMenu(availableTowers);
 }
 
 
@@ -41,7 +42,7 @@ void PlayStateModel::StartWave(int waveNumber) {
                              waveUnit.getHp(),
                              waveUnit.getSize(),
                              waveUnit.getSpeed(),
-                             312.5, 0  - i * waveUnit.getDensity(), 2, 0, 0,
+                             312.5, 0 - i * waveUnit.getDensity(), 2, 0, 0,
                              waveUnit.getId(),
                              waveUnit.getXOffset(),
                              waveUnit.getYOffset()
@@ -133,5 +134,26 @@ void PlayStateModel::Update() {
 
 const std::vector<Terrain> &PlayStateModel::getTerrainBlocks() const {
     return terrainBlocks;
+}
+
+void PlayStateModel::LoadTowerInformation() {
+    //TODO: dont crash on invalid xml
+    tinyxml2::XMLDocument doc;
+    if (doc.LoadFile("config/towers.xml")) {
+        std::cerr << "Could not load file towers.xml" << std::endl;
+    } else {
+        tinyxml2::XMLElement *towersElement = doc.FirstChildElement("towers");
+        for (tinyxml2::XMLElement *tower = towersElement->FirstChildElement();
+             tower != NULL; tower = tower->NextSiblingElement()) {
+            //do this for every tower:
+            availableTowers.push_back(Tower(std::atoi(tower->FirstChildElement("id")->GetText()),
+                                            tower->FirstChildElement("hand")->GetText(),
+                                            std::atoi(tower->FirstChildElement("damage")->GetText()),
+                                            std::atoi(tower->FirstChildElement("attackSpeed")->GetText()),
+                                            std::atoi(tower->FirstChildElement("slowPercent")->GetText()),
+                                            std::atoi(tower->FirstChildElement("aoePercent")->GetText())
+            ));
+        }
+    }
 }
 

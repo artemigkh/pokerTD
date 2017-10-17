@@ -9,12 +9,13 @@
 #include <SFML/Graphics/Texture.hpp>
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
+#include "Tower.h"
 
 class TowerMenuDrawer {
 public:
     TowerMenuDrawer(sf::RenderWindow &window);
     ~TowerMenuDrawer();
-    void Draw();
+    void Draw(std::vector<Tower> towers);
 
 private:
     sf::RenderWindow& window;
@@ -22,8 +23,8 @@ private:
     sf::Texture menuBackgroundTexture;
     sf::Sprite menuBackgroundSprite;
 
-    sf::Texture unknownTowerIcon;
-    sf::Sprite unknownTowerSprite;
+    sf::Texture unknownTowerIconTexture;
+    sf::Sprite unknownTowerIconSprite;
 };
 
 

@@ -23,7 +23,7 @@ public:
     ~PlayStateDrawObject();
     void DrawTerrain(std::vector<Terrain> terrainBlocks);
     void DrawUnits(std::vector<Unit> units);
-    void DrawTowerMenu();
+    void DrawTowerMenu(std::vector<Tower> menuTowers);
 
 private:
     void LoadTerrainTextures();

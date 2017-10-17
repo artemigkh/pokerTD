@@ -13,6 +13,7 @@
 #include "Terrain.h"
 #include "Wave.h"
 #include "Unit.h"
+#include "Tower.h"
 
 class Unit;
 class PlayStateDrawObject;
@@ -30,12 +31,14 @@ public:
 private:
     void LoadTerrain();
     void LoadWaveInformation();
+    void LoadTowerInformation();
     void StartWave(int waveNumber);
     TerrainTypes getTerrainType(std::string sample);
 
     std::vector<Unit> units;
     std::vector<Terrain> terrainBlocks;
     std::vector<Wave> waves;
+    std::vector<Tower> availableTowers;
 };
 
 

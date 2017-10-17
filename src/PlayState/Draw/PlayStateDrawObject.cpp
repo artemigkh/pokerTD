@@ -124,7 +124,7 @@ void PlayStateDrawObject::DrawUnits(std::vector<Unit> units) {
     }
 }
 
-void PlayStateDrawObject::DrawTowerMenu() {
-    towerMenuDrawer.Draw();
+void PlayStateDrawObject::DrawTowerMenu(std::vector<Tower> menuTowers) {
+    towerMenuDrawer.Draw(menuTowers);
 }
 

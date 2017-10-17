@@ -13,6 +13,20 @@ public:
 
 private:
     int id;
+public:
+    int getId() const;
+
+    const std::string &getHand() const;
+
+    int getDamage() const;
+
+    int getAttackSpeed() const;
+
+    int getSlowPercent() const;
+
+    int getAoePercent() const;
+
+private:
     std::string hand;
     int damage;
     int attackSpeed;

@@ -17,6 +17,10 @@ namespace grc{
 
     const int TOWER_WINDOW_WIDTH = 300;
     const int TOWER_WINDOW_HEIGHT = 1100;
+
+    const int MENU_TITLE_HEIGHT = 100;
+    const float MENU_DISTANCE = 88.5;
+    const int MENU_LEFT_MARGIN = 20;
 }
 
 #endif //POKERTD_GRAPHICSCONSTANTS_H
