@@ -21,6 +21,11 @@ namespace grc{
     const int MENU_TITLE_HEIGHT = 100;
     const float MENU_DISTANCE = 88.5;
     const int MENU_LEFT_MARGIN = 20;
+
+    const int NAME_TEXT_SIZE = 20;
+    const int DESC_TEXT_SIZE = 12;
+    const int DESC_TOP_MARGIN = 6;
+    const int DESC_SIDE_OFFSET = 75;
 }
 
 #endif //POKERTD_GRAPHICSCONSTANTS_H
