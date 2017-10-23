@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <towers>
     <tower>
-        <id>0</id>
         <hand>High Card</hand>
         <damage>5</damage>
         <attackSpeed>1</attackSpeed>
@@ -9,7 +8,6 @@
         <aoePercent>0</aoePercent>
     </tower>
     <tower>
-        <id>1</id>
         <hand>Pair</hand>
         <damage>0</damage>
         <attackSpeed>0</attackSpeed>
@@ -17,7 +15,6 @@
         <aoePercent>0</aoePercent>
     </tower>
     <tower>
-        <id>2</id>
         <hand>Two Pair</hand>
         <damage>0</damage>
         <attackSpeed>0</attackSpeed>
@@ -25,7 +22,6 @@
         <aoePercent>0</aoePercent>
     </tower>
     <tower>
-        <id>3</id>
         <hand>Three of a Kind</hand>
         <damage>0</damage>
         <attackSpeed>0</attackSpeed>
@@ -33,7 +29,6 @@
         <aoePercent>0</aoePercent>
     </tower>
     <tower>
-        <id>4</id>
         <hand>Straight</hand>
         <damage>0</damage>
         <attackSpeed>0</attackSpeed>
@@ -41,7 +36,6 @@
         <aoePercent>0</aoePercent>
     </tower>
     <tower>
-        <id>5</id>
         <hand>Flush</hand>
         <damage>0</damage>
         <attackSpeed>0</attackSpeed>
@@ -49,7 +43,6 @@
         <aoePercent>0</aoePercent>
     </tower>
     <tower>
-        <id>6</id>
         <hand>Full House</hand>
         <damage>0</damage>
         <attackSpeed>0</attackSpeed>
@@ -57,7 +50,6 @@
         <aoePercent>0</aoePercent>
     </tower>
     <tower>
-        <id>7</id>
         <hand>Four of a Kind</hand>
         <damage>0</damage>
         <attackSpeed>0</attackSpeed>
@@ -65,7 +57,6 @@
         <aoePercent>0</aoePercent>
     </tower>
     <tower>
-        <id>8</id>
         <hand>Straight Flush</hand>
         <damage>0</damage>
         <attackSpeed>0</attackSpeed>
@@ -73,7 +64,6 @@
         <aoePercent>0</aoePercent>
     </tower>
     <tower>
-        <id>9</id>
         <hand>Royal Flush</hand>
         <damage>0</damage>
         <attackSpeed>0</attackSpeed>

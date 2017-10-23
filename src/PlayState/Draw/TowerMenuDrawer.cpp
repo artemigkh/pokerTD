@@ -33,11 +33,18 @@ void TowerMenuDrawer::Draw(std::vector<Tower> towers) {
     for (std::vector<Tower>::iterator it = towers.begin(); it != towers.end(); ++it) {
         Tower tower = (*it);
         float basePosX = gac::WINDOW_WIDTH + grc::MENU_LEFT_MARGIN;
-        float basePosY = grc::MENU_TITLE_HEIGHT + tower.getId() * grc::MENU_DISTANCE;
-        unknownTowerIconSprite.setPosition(basePosX, basePosY);
-        window.draw(unknownTowerIconSprite);
+        float basePosY = grc::MENU_TITLE_HEIGHT + tower.getHand() * grc::MENU_DISTANCE;
 
-        nameText.setString(tower.getHand());
+        if(tower.getHand() == HIGH_CARD){
+            genericTowerIconSprite.setPosition(basePosX, basePosY);
+            window.draw(genericTowerIconSprite);
+        }
+        else{
+            unknownTowerIconSprite.setPosition(basePosX, basePosY);
+            window.draw(unknownTowerIconSprite);
+        }
+
+        nameText.setString(tower.getHandString());
         nameText.setPosition(basePosX + 80, basePosY);
         window.draw(nameText);
 
@@ -70,6 +77,10 @@ void TowerMenuDrawer::LoadTextures() {
     }
     unknownTowerIconSprite.setTexture(unknownTowerIconTexture);
 
+    if (!genericTowerIconTexture.loadFromFile("res/img/towerMenu/generic_tower_icon.png")) {
+        genericTowerIconTexture.create(gac::SQUARE_WIDTH_UNSIGNED, gac::SQUARE_HEIGHT_UNSIGNED);
+    }
+    genericTowerIconSprite.setTexture(genericTowerIconTexture);
 }
 
 void TowerMenuDrawer::LoadFonts() {

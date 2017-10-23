@@ -146,8 +146,7 @@ void PlayStateModel::LoadTowerInformation() {
         for (tinyxml2::XMLElement *tower = towersElement->FirstChildElement();
              tower != NULL; tower = tower->NextSiblingElement()) {
             //do this for every tower:
-            availableTowers.push_back(Tower(std::atoi(tower->FirstChildElement("id")->GetText()),
-                                            tower->FirstChildElement("hand")->GetText(),
+            availableTowers.push_back(Tower(tower->FirstChildElement("hand")->GetText(),
                                             std::atoi(tower->FirstChildElement("damage")->GetText()),
                                             std::atoi(tower->FirstChildElement("attackSpeed")->GetText()),
                                             std::atoi(tower->FirstChildElement("slowPercent")->GetText()),

@@ -32,6 +32,9 @@ private:
     sf::Texture unknownTowerIconTexture;
     sf::Sprite unknownTowerIconSprite;
 
+    sf::Texture genericTowerIconTexture;
+    sf::Sprite genericTowerIconSprite;
+
     sf::Font nameFont;
     sf::Font descFont;
 

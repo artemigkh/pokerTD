@@ -6,17 +6,13 @@
 #define POKERTD_TOWER_H
 
 #include <string>
+#include "../PlayState/HandsEnum.h"
 
 class Tower {
 public:
-    Tower(int id, const std::string &hand, int damage, int attackSpeed, int slowPercent, int aoePercent);
+    Tower(const std::string &hand, int damage, int attackSpeed, int slowPercent, int aoePercent);
 
-private:
-    int id;
-public:
-    int getId() const;
-
-    const std::string &getHand() const;
+    const std::string &getHandString() const;
 
     int getDamage() const;
 
@@ -27,7 +23,12 @@ public:
     int getAoePercent() const;
 
 private:
-    std::string hand;
+    Hand hand;
+public:
+    Hand getHand() const;
+
+private:
+    std::string handString;
     int damage;
     int attackSpeed;
     int slowPercent;
