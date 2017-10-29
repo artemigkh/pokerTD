@@ -39,6 +39,7 @@ private:
     std::vector<Terrain> terrainBlocks;
     std::vector<Wave> waves;
     std::vector<Tower> availableTowers;
+    std::vector<ActiveTower> activeTowers;
 };
 
 

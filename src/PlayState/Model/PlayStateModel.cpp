@@ -18,8 +18,6 @@ PlayStateModel::PlayStateModel() {
     LoadWaveInformation();
     LoadTowerInformation();
     StartWave(0);
-//    units.push_back(Unit("sheep", "sheepDesc", 10, 48, 200, 312.5, 0, 2, 0, 0, 0, 0, 0));
-//    units.push_back(Unit("sheep", "sheepDesc", 10, 48, 200, 312.5, -50, 2, 0, 0, 0, 0, 0));
 }
 
 void PlayStateModel::Draw(PlayStateDrawObject *drawObject) {
@@ -116,7 +114,7 @@ void PlayStateModel::LoadWaveInformation() {
     } else {
         tinyxml2::XMLElement *wavesElement = doc.FirstChildElement("waves");
         for (tinyxml2::XMLElement *wave = wavesElement->FirstChildElement();
-             wave != NULL; wave = wave->NextSiblingElement()) {
+             wave != nullptr; wave = wave->NextSiblingElement()) {
             //do this for every wave:
             waves.push_back(Wave(std::atoi(wave->FirstChildElement("number")->GetText()),
                                  wave->FirstChildElement("successMessage")->GetText(),
@@ -144,7 +142,7 @@ void PlayStateModel::LoadTowerInformation() {
     } else {
         tinyxml2::XMLElement *towersElement = doc.FirstChildElement("towers");
         for (tinyxml2::XMLElement *tower = towersElement->FirstChildElement();
-             tower != NULL; tower = tower->NextSiblingElement()) {
+             tower != nullptr; tower = tower->NextSiblingElement()) {
             //do this for every tower:
             availableTowers.push_back(Tower(tower->FirstChildElement("hand")->GetText(),
                                             std::atoi(tower->FirstChildElement("damage")->GetText()),

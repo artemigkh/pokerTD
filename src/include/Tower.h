@@ -11,6 +11,7 @@
 class Tower {
 public:
     Tower(const std::string &hand, int damage, int attackSpeed, int slowPercent, int aoePercent);
+    Tower(const Tower &oTower);
 
     const std::string &getHandString() const;
 

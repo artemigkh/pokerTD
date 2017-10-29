@@ -62,3 +62,12 @@ int Tower::getAoePercent() const {
 Hand Tower::getHand() const {
     return hand;
 }
+
+Tower::Tower(const Tower &oTower) {
+    aoePercent = oTower.aoePercent;
+    hand = oTower.hand;
+    slowPercent = oTower.slowPercent;
+    attackSpeed = oTower.attackSpeed;
+    damage = oTower.damage;
+    handString = oTower.handString;
+}

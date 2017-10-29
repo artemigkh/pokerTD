@@ -97,7 +97,7 @@ void PlayStateDrawObject::CreateUnitDrawers() {
     } else {
         tinyxml2::XMLElement *spriteSheetsElement = doc.FirstChildElement("spriteSheets");
         for (tinyxml2::XMLElement *spriteSheet = spriteSheetsElement->FirstChildElement();
-             spriteSheet != NULL; spriteSheet = spriteSheet->NextSiblingElement()) {
+             spriteSheet != nullptr; spriteSheet = spriteSheet->NextSiblingElement()) {
             //do this for every wave:
             unitDrawers[std::atoi(spriteSheet->FirstChildElement("id")->GetText())] =
                     new SpriteDrawObject(window, spriteSheet->FirstChildElement("filename")->GetText());
