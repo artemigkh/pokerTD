@@ -36,10 +36,11 @@ void PlayState::HandleUserInput(GameEngine *game) {
             game->Stop();
         }
         else if(event.type == sf::Event::MouseMoved){
-            x = event.mouseMove.x;
-            y = event.mouseMove.y;
+            model->ReceiveMouseMove(event.mouseMove.x, event.mouseMove.y);
         }
-
+        else if(event.type == sf::Event::MouseButtonPressed){
+            model->ReceiveMouseClick(event.mouseButton.x, event.mouseButton.y);
+        }
     }
 //
 //    sf::CircleShape shape(50);

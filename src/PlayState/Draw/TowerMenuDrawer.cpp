@@ -43,7 +43,7 @@ void TowerMenuDrawer::Draw(std::vector<Tower> towers) {
             unknownTowerIconSprite.setPosition(basePosX, basePosY);
             window.draw(unknownTowerIconSprite);
         }
-
+        //TODO: refactor 80s and icon size (currently 65) to constants
         nameText.setString(tower.getHandString());
         nameText.setPosition(basePosX + 80, basePosY);
         window.draw(nameText);

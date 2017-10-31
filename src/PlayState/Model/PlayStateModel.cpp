@@ -12,6 +12,7 @@
 
 #include "../../include/GameConstants.h"
 #include "../../include/PlayStateDrawObject.h"
+#include "../Draw/GraphicsConstants.h"
 
 PlayStateModel::PlayStateModel() {
     LoadTerrain();
@@ -56,7 +57,19 @@ void PlayStateModel::ReceiveMouseMove(int x, int y) {
 }
 
 void PlayStateModel::ReceiveMouseClick(int x, int y) {
+    CheckMenuItems(x, y);
+}
 
+void PlayStateModel::CheckMenuItems(int x, int y) {
+    if(x < gac::WINDOW_WIDTH + grc::MENU_LEFT_MARGIN || x > gac::WINDOW_WIDTH + grc::MENU_LEFT_MARGIN + 65){
+        return;
+    }
+    for(int h = HIGH_CARD; h <= ROYAL_FLUSH; h++){
+        if(y > grc::MENU_TITLE_HEIGHT + h * grc::MENU_DISTANCE && y < grc::MENU_TITLE_HEIGHT + h * grc::MENU_DISTANCE + 65){
+            std::cerr << h << std::endl;
+            return;
+        }
+    }
 }
 
 TerrainTypes PlayStateModel::getTerrainType(std::string sample) {
@@ -153,4 +166,5 @@ void PlayStateModel::LoadTowerInformation() {
         }
     }
 }
+
 

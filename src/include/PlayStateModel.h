@@ -33,6 +33,8 @@ private:
     void LoadWaveInformation();
     void LoadTowerInformation();
     void StartWave(int waveNumber);
+
+    void CheckMenuItems(int x, int y);
     TerrainTypes getTerrainType(std::string sample);
 
     std::vector<Unit> units;

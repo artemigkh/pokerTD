@@ -27,9 +27,7 @@ public:
     int getY2() const;
 
 private:
-    TerrainTypes terrainType;
-    bool isBuildable;
-
+    void placeTower(int x, int y, ActiveTower* tower);
     /*
      * each buildable terrain will have a 4x4 grid of buildable tiles
      * each tower will be 2x2
@@ -40,6 +38,8 @@ private:
      * |            |
      * +-----------(x2,y2)
     */
+    TerrainTypes terrainType;
+    bool isBuildable;
     int x1;
     int y1;
     int x2;

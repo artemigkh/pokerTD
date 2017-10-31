@@ -35,3 +35,7 @@ int Terrain::getY2() const {
 bool Terrain::isSquareBuildable(int x, int y) {
     return isBuildable && (towerSpaces[x + 4 * y] == nullptr);
 }
+
+void Terrain::placeTower(int x, int y, ActiveTower *tower) {
+    towerSpaces[x + 4 * y] = tower;
+}
