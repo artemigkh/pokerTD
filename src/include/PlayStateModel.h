@@ -29,6 +29,11 @@ public:
     const std::vector<Terrain> &getTerrainBlocks() const;
 
 private:
+    bool towerPlaceState;
+    Hand towerBeingPlaced;
+    int mousePosX;
+    int mousePosY;
+
     void LoadTerrain();
     void LoadWaveInformation();
     void LoadTowerInformation();
@@ -42,6 +47,9 @@ private:
     std::vector<Wave> waves;
     std::vector<Tower> availableTowers;
     std::vector<ActiveTower> activeTowers;
+
+    void MoveUnits();
+    void CheckTowerBuilding();
 };
 
 

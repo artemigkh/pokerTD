@@ -16,18 +16,32 @@ public:
 
     TerrainTypes getTerrainType() const;
 
+    bool isCoordinateInSquare(int x, int y);
     bool isSquareBuildable(int x, int y);
 
+    void Update();
+
+    void previewPlaceTower();
+    void placeTower(int x, int y, ActiveTower* tower);
+
     int getX1() const;
-
     int getY1() const;
-
     int getX2() const;
-
     int getY2() const;
 
+    bool IsValidBuildState() const;
+
+    bool IsInvalidBuildState() const;
+
 private:
-    void placeTower(int x, int y, ActiveTower* tower);
+    TerrainTypes terrainType;
+    bool isBuildable;
+    int x1;
+    int y1;
+    int x2;
+    int y2;
+    bool isValidBuildState;
+    bool isInvalidBuildState;
     /*
      * each buildable terrain will have a 4x4 grid of buildable tiles
      * each tower will be 2x2
@@ -38,12 +52,7 @@ private:
      * |            |
      * +-----------(x2,y2)
     */
-    TerrainTypes terrainType;
-    bool isBuildable;
-    int x1;
-    int y1;
-    int x2;
-    int y2;
+
 };
 
 

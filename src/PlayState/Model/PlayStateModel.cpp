@@ -15,6 +15,8 @@
 #include "../Draw/GraphicsConstants.h"
 
 PlayStateModel::PlayStateModel() {
+    towerPlaceState = false;
+
     LoadTerrain();
     LoadWaveInformation();
     LoadTowerInformation();
@@ -53,7 +55,8 @@ PlayStateModel::~PlayStateModel() {
 }
 
 void PlayStateModel::ReceiveMouseMove(int x, int y) {
-
+    mousePosX = x;
+    mousePosY = y;
 }
 
 void PlayStateModel::ReceiveMouseClick(int x, int y) {
@@ -66,7 +69,8 @@ void PlayStateModel::CheckMenuItems(int x, int y) {
     }
     for(int h = HIGH_CARD; h <= ROYAL_FLUSH; h++){
         if(y > grc::MENU_TITLE_HEIGHT + h * grc::MENU_DISTANCE && y < grc::MENU_TITLE_HEIGHT + h * grc::MENU_DISTANCE + 65){
-            std::cerr << h << std::endl;
+            towerBeingPlaced = static_cast<Hand>(h);
+            towerPlaceState = true;
             return;
         }
     }
@@ -137,7 +141,11 @@ void PlayStateModel::LoadWaveInformation() {
 }
 
 void PlayStateModel::Update() {
-    //update unit movement
+    MoveUnits();
+    CheckTowerBuilding();
+}
+
+void PlayStateModel::MoveUnits() {
     for (std::vector<Unit>::iterator it = units.begin(); it != units.end(); ++it) {
         (*it).Update(this);
     }
@@ -163,6 +171,19 @@ void PlayStateModel::LoadTowerInformation() {
                                             std::atoi(tower->FirstChildElement("slowPercent")->GetText()),
                                             std::atoi(tower->FirstChildElement("aoePercent")->GetText())
             ));
+        }
+    }
+}
+
+void PlayStateModel::CheckTowerBuilding() {
+    if(!towerPlaceState){
+        return;
+    }
+    for (std::vector<Terrain>::iterator it = terrainBlocks.begin(); it != terrainBlocks.end(); ++it) {
+        Terrain t = (*it);
+        t.Update(); //this clears the green and red states, which is then reapplied
+        if(t.isCoordinateInSquare(mousePosX, mousePosY)){
+            t.previewPlaceTower();
         }
     }
 }

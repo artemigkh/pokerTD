@@ -39,3 +39,24 @@ bool Terrain::isSquareBuildable(int x, int y) {
 void Terrain::placeTower(int x, int y, ActiveTower *tower) {
     towerSpaces[x + 4 * y] = tower;
 }
+
+bool Terrain::isCoordinateInSquare(int x, int y) {
+    return (x > x1 && x < x2 && y > y1 && y < y2);
+}
+
+void Terrain::previewPlaceTower() {
+    isValidBuildState = true;
+}
+
+void Terrain::Update() {
+    isValidBuildState = false;
+    isInvalidBuildState = false;
+}
+
+bool Terrain::IsValidBuildState() const {
+    return isValidBuildState;
+}
+
+bool Terrain::IsInvalidBuildState() const {
+    return isInvalidBuildState;
+}
