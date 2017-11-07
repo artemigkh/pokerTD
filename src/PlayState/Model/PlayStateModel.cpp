@@ -71,6 +71,7 @@ void PlayStateModel::CheckMenuItems(int x, int y) {
         if(y > grc::MENU_TITLE_HEIGHT + h * grc::MENU_DISTANCE && y < grc::MENU_TITLE_HEIGHT + h * grc::MENU_DISTANCE + 65){
             towerBeingPlaced = static_cast<Hand>(h);
             towerPlaceState = true;
+            std::cerr << "Tower Place State: " << h << std::endl;
             return;
         }
     }
@@ -180,7 +181,7 @@ void PlayStateModel::CheckTowerBuilding() {
         return;
     }
     for (std::vector<Terrain>::iterator it = terrainBlocks.begin(); it != terrainBlocks.end(); ++it) {
-        Terrain t = (*it);
+        Terrain &t = (*it);
         t.Update(); //this clears the green and red states, which is then reapplied
         if(t.isCoordinateInSquare(mousePosX, mousePosY)){
             t.previewPlaceTower();

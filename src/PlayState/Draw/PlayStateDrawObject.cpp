@@ -24,68 +24,40 @@ void PlayStateDrawObject::DrawTerrain(std::vector<Terrain> terrainBlocks) {
         //TODO: refactor into something that handles states more cleanly
         switch (t.getTerrainType()) {
             case CORNER_TOP_LEFT:
-                if(t.IsValidBuildState()){
-                    cornerTopLeftTerrainSprite.setColor(sf::Color(0, 255, 0, 128));
-                }
-                cornerTopLeftTerrainSprite.setPosition((*it).getX1(), (*it).getY1());
+                cornerTopLeftTerrainSprite.setPosition(t.getX1(), t.getY1());
                 window.draw(cornerTopLeftTerrainSprite);
-                cornerTopLeftTerrainSprite.setColor(sf::Color(0, 0, 0, 0));
                 break;
             case CORNER_TOP_RIGHT:
-                if(t.IsValidBuildState()){
-                    cornerTopRightTerrainSprite.setColor(sf::Color(0, 255, 0, 128));
-                }
-                cornerTopRightTerrainSprite.setPosition((*it).getX1(), (*it).getY1());
+                cornerTopRightTerrainSprite.setPosition(t.getX1(), t.getY1());
                 window.draw(cornerTopRightTerrainSprite);
-                cornerTopRightTerrainSprite.setColor(sf::Color(0, 0, 0, 0));
                 break;
             case CORNER_BOTTOM_LEFT:
-                if(t.IsValidBuildState()){
-                    cornerBottomLeftTerrainSprite.setColor(sf::Color(0, 255, 0, 128));
-                }
-                cornerBottomLeftTerrainSprite.setPosition((*it).getX1(), (*it).getY1());
+                cornerBottomLeftTerrainSprite.setPosition(t.getX1(), t.getY1());
                 window.draw(cornerBottomLeftTerrainSprite);
-                cornerBottomLeftTerrainSprite.setColor(sf::Color(0, 0, 0, 0));
                 break;
             case CORNER_BOTTOM_RIGHT:
-                if(t.IsValidBuildState()){
-                    cornerBottomRightTerrainSprite.setColor(sf::Color(0, 255, 0, 128));
-                }
-                cornerBottomRightTerrainSprite.setPosition((*it).getX1(), (*it).getY1());
+                cornerBottomRightTerrainSprite.setPosition(t.getX1(), t.getY1());
                 window.draw(cornerBottomRightTerrainSprite);
-                cornerBottomRightTerrainSprite.setColor(sf::Color(0, 0, 0, 0));
                 break;
             case VERTICAL:
-                if(t.IsValidBuildState()){
-                    verticalTerrainSprite.setColor(sf::Color(0, 255, 0, 128));
-                }
-                verticalTerrainSprite.setPosition((*it).getX1(), (*it).getY1());
+                verticalTerrainSprite.setPosition(t.getX1(), t.getY1());
                 window.draw(verticalTerrainSprite);
-                verticalTerrainSprite.setColor(sf::Color(0, 0, 0, 0));
                 break;
             case HORIZONTAL:
-                if(t.IsValidBuildState()){
-                    horizontalTerrainSprite.setColor(sf::Color(0, 255, 0, 128));
-                }
-                horizontalTerrainSprite.setPosition((*it).getX1(), (*it).getY1());
+                horizontalTerrainSprite.setPosition(t.getX1(), t.getY1());
                 window.draw(horizontalTerrainSprite);
-                horizontalTerrainSprite.setColor(sf::Color(0, 0, 0, 0));
                 break;
             case BUILDABLE:
                 if(t.IsValidBuildState()){
                     buildableTerrainSprite.setColor(sf::Color(0, 255, 0, 128));
                 }
-                buildableTerrainSprite.setPosition((*it).getX1(), (*it).getY1());
+                buildableTerrainSprite.setPosition(t.getX1(), t.getY1());
                 window.draw(buildableTerrainSprite);
-                buildableTerrainSprite.setColor(sf::Color(0, 0, 0, 0));
+                buildableTerrainSprite.setColor(sf::Color(255, 255, 255, 255));
                 break;
             default:
-                if(t.IsValidBuildState()){
-                    undefinedTerrainSprite.setColor(sf::Color(0, 255, 0, 128));
-                }
-                undefinedTerrainSprite.setPosition((*it).getX1(), (*it).getY1());
+                undefinedTerrainSprite.setPosition(t.getX1(), t.getY1());
                 window.draw(undefinedTerrainSprite);
-                undefinedTerrainSprite.setColor(sf::Color(0, 0, 0, 0));
                 break;
         }
 
