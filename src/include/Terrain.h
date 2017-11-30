@@ -7,7 +7,7 @@
 
 #include <vector>
 #include "../PlayState/TerrainTypes.h"
-#include "../PlayState/HandsEnum.h"
+#include "HandsEnum.h"
 #include "ActiveTower.h"
 
 class Terrain {

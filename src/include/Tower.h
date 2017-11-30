@@ -6,7 +6,7 @@
 #define POKERTD_TOWER_H
 
 #include <string>
-#include "../PlayState/HandsEnum.h"
+#include "HandsEnum.h"
 
 class Tower {
 public:
