@@ -13,3 +13,8 @@ Suit Card::getSuit() const {
 CardValue Card::getCardValue() const {
     return cardValue;
 }
+
+Card::Card(const Card &card) {
+    suit = card.getSuit();
+    cardValue = card.getCardValue();
+}

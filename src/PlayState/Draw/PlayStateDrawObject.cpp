@@ -11,7 +11,7 @@
 #include "../TerrainTypes.h"
 #include "../../include/GameConstants.h"
 
-PlayStateDrawObject::PlayStateDrawObject(sf::RenderWindow &window) : window(window), towerMenuDrawer(window) {
+PlayStateDrawObject::PlayStateDrawObject(sf::RenderWindow &window) : window(window), towerMenuDrawer(window), activeTowerDrawer(window) {
     LoadTerrainTextures();
     CreateUnitDrawers();
 }
@@ -133,5 +133,9 @@ void PlayStateDrawObject::DrawUnits(std::vector<Unit> units) {
 
 void PlayStateDrawObject::DrawTowerMenu(std::vector<Tower> menuTowers) {
     towerMenuDrawer.Draw(menuTowers);
+}
+
+void PlayStateDrawObject::DrawActiveTowers(std::vector<ActiveTower*> activeTowers) {
+    activeTowerDrawer.Draw(activeTowers);
 }
 

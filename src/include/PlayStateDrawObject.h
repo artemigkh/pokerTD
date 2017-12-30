@@ -15,6 +15,7 @@
 #include "SpriteDrawObject.h"
 #include "Unit.h"
 #include "TowerMenuDrawer.h"
+#include "ActiveTowerDrawer.h"
 //TODO: refactor terrain part into a terrain drawer class
 
 class PlayStateDrawObject {
@@ -24,6 +25,7 @@ public:
     void DrawTerrain(std::vector<Terrain> terrainBlocks);
     void DrawUnits(std::vector<Unit> units);
     void DrawTowerMenu(std::vector<Tower> menuTowers);
+    void DrawActiveTowers(std::vector<ActiveTower*> activeTowers);
 
 private:
     void LoadTerrainTextures();
@@ -49,6 +51,7 @@ private:
 
     std::map<int, SpriteDrawObject*> unitDrawers;
     TowerMenuDrawer towerMenuDrawer;
+    ActiveTowerDrawer activeTowerDrawer;
 };
 
 

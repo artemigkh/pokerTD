@@ -6,7 +6,8 @@
 #define POKERTD_CARDVALUESENUM_H
 
 enum CardValue {
-    TWO = 2,
+    LOW_ACE = 1,
+    TWO,
     THREE,
     FOUR,
     FIVE,

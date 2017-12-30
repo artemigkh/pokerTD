@@ -27,6 +27,7 @@ void PlayStateModel::Draw(PlayStateDrawObject *drawObject) {
     drawObject->DrawTerrain(terrainBlocks);
     drawObject->DrawUnits(units);
     drawObject->DrawTowerMenu(availableTowers);
+    drawObject->DrawActiveTowers(activeTowers);
 }
 
 
@@ -52,6 +53,9 @@ void PlayStateModel::StartWave(int waveNumber) {
 }
 
 PlayStateModel::~PlayStateModel() {
+    for (std::vector<ActiveTower*>::iterator it = activeTowers.begin(); it != activeTowers.end(); ++it) {
+        delete(*it);
+    }
 }
 
 void PlayStateModel::ReceiveMouseMove(int x, int y) {
@@ -61,6 +65,7 @@ void PlayStateModel::ReceiveMouseMove(int x, int y) {
 
 void PlayStateModel::ReceiveMouseClick(int x, int y) {
     CheckMenuItems(x, y);
+    CheckTowers(x, y);
 }
 
 void PlayStateModel::CheckMenuItems(int x, int y) {
@@ -69,9 +74,13 @@ void PlayStateModel::CheckMenuItems(int x, int y) {
     }
     for(int h = HIGH_CARD; h <= ROYAL_FLUSH; h++){
         if(y > grc::MENU_TITLE_HEIGHT + h * grc::MENU_DISTANCE && y < grc::MENU_TITLE_HEIGHT + h * grc::MENU_DISTANCE + 65){
-            towerBeingPlaced = static_cast<Hand>(h);
-            towerPlaceState = true;
-            std::cerr << "Tower Place State: " << h << std::endl;
+            if(towerPlaceState && towerBeingPlaced == static_cast<Hand>(h)){
+                towerPlaceState = false;
+            }
+            else{
+                towerBeingPlaced = static_cast<Hand>(h);
+                towerPlaceState = true;
+            }
             return;
         }
     }
@@ -167,10 +176,10 @@ void PlayStateModel::LoadTowerInformation() {
              tower != nullptr; tower = tower->NextSiblingElement()) {
             //do this for every tower:
             availableTowers.push_back(Tower(tower->FirstChildElement("hand")->GetText(),
-                                            std::atoi(tower->FirstChildElement("damage")->GetText()),
-                                            std::atoi(tower->FirstChildElement("attackSpeed")->GetText()),
-                                            std::atoi(tower->FirstChildElement("slowPercent")->GetText()),
-                                            std::atoi(tower->FirstChildElement("aoePercent")->GetText())
+                    std::atoi(tower->FirstChildElement("damage")->GetText()),
+                    std::atoi(tower->FirstChildElement("attackSpeed")->GetText()),
+                    std::atoi(tower->FirstChildElement("slowPercent")->GetText()),
+                    std::atoi(tower->FirstChildElement("aoePercent")->GetText())
             ));
         }
     }
@@ -183,8 +192,25 @@ void PlayStateModel::CheckTowerBuilding() {
     for (std::vector<Terrain>::iterator it = terrainBlocks.begin(); it != terrainBlocks.end(); ++it) {
         Terrain &t = (*it);
         t.Update(); //this clears the green and red states, which is then reapplied
-        if(t.isCoordinateInSquare(mousePosX, mousePosY)){
+        if(t.isCoordinateInSquare(mousePosX, mousePosY) && t.isSquareBuildable()){
             t.previewPlaceTower();
+        }
+    }
+}
+
+void PlayStateModel::CheckTowers(int x, int y) {
+    //place tower
+    if(towerPlaceState) {
+        for (std::vector<Terrain>::iterator it = terrainBlocks.begin(); it != terrainBlocks.end(); ++it) {
+            Terrain &t = (*it);
+
+            if(t.isCoordinateInSquare(x, y) && t.isSquareBuildable()){
+                ActiveTower *newTower =
+                        new ActiveTower(availableTowers[towerBeingPlaced], t.getX1(), t.getY1());
+                t.placeTower(newTower);
+                activeTowers.push_back(newTower);
+                towerPlaceState = false;
+            }
         }
     }
 }

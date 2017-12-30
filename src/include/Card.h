@@ -12,6 +12,7 @@
 class Card {
 public:
     Card(Suit suit, CardValue value);
+    Card(const Card &card);
     Suit getSuit() const;
     CardValue getCardValue() const;
 

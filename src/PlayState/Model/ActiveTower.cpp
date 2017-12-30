@@ -7,3 +7,11 @@
 ActiveTower::ActiveTower(const Tower &baseTower, int posX, int posY) : Tower(baseTower), posX(posX), posY(posY){
 
 }
+
+int ActiveTower::getPosX() const {
+    return posX;
+}
+
+int ActiveTower::getPosY() const {
+    return posY;
+}

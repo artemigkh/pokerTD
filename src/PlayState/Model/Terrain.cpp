@@ -10,9 +10,7 @@
 Terrain::Terrain(int x1, int y1, int x2, int y2, TerrainTypes terrainType)
         : x1(x1), y1(y1), terrainType(terrainType), x2(x2), y2(y2) {
     isBuildable = (terrainType == BUILDABLE);
-    for(int i = 0; i < 16; i++){
-        towerSpaces.push_back(nullptr);
-    }
+    activeTower = nullptr;
     isValidBuildState = false;
 }
 
@@ -36,12 +34,13 @@ int Terrain::getY2() const {
     return y2;
 }
 
-bool Terrain::isSquareBuildable(int x, int y) {
-    return isBuildable && (towerSpaces[x + 4 * y] == nullptr);
+bool Terrain::isSquareBuildable() {
+    return isBuildable && activeTower == nullptr;
 }
 
-void Terrain::placeTower(int x, int y, ActiveTower *tower) {
-    towerSpaces[x + 4 * y] = tower;
+void Terrain::placeTower(ActiveTower *tower) {
+    activeTower = tower;
+    isValidBuildState = false;
 }
 
 bool Terrain::isCoordinateInSquare(int x, int y) {

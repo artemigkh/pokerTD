@@ -40,13 +40,14 @@ private:
     void StartWave(int waveNumber);
 
     void CheckMenuItems(int x, int y);
+    void CheckTowers(int x, int y);
     TerrainTypes getTerrainType(std::string sample);
 
     std::vector<Unit> units;
     std::vector<Terrain> terrainBlocks;
     std::vector<Wave> waves;
     std::vector<Tower> availableTowers;
-    std::vector<ActiveTower> activeTowers;
+    std::vector<ActiveTower*> activeTowers;
 
     void MoveUnits();
     void CheckTowerBuilding();

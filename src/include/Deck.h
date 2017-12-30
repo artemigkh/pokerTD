@@ -12,6 +12,7 @@
 class Deck {
 public:
     Deck();
+    void RestoreDeck();
     void ResetDeck();
     void ShuffleDeck();
     Card PopTopCard();
@@ -19,6 +20,7 @@ public:
 
 private:
     std::vector<Card> cards;
+    std::vector<Card> cardsBackup;
 };
 
 

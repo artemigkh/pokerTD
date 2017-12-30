@@ -12,16 +12,34 @@
 class PokerHand {
 public:
     PokerHand(Card &c1, Card &c2, Card &c3, Card &c4, Card &c5);
+    PokerHand(const std::vector<Card> &cards);
     Hand getHand();
-    CardValue getHighCard();
+//    CardValue getHighCard();
 
 private:
     std::vector<Card> cards;
-    CardValue highCard;
+
+private:
+//    CardValue highCard;
     Hand hand;
 
-    void SetHighCard();
+    int NumCards[15];
+    int NumSameValues[5];
+    int Suits[4];
+    CardValue smallestValue;
+
     void ComputeHand();
+    void PreSort();
+
+    bool isRoyalFlush();
+    bool isStraightFlush();
+    bool isFourOfAKind();
+    bool isFullHouse();
+    bool isFlush();
+    bool isStraight();
+    bool isThreeOfAKind();
+    bool isTwoPair();
+    bool isPair();
 };
 
 

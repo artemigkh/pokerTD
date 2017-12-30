@@ -17,12 +17,12 @@ public:
     TerrainTypes getTerrainType() const;
 
     bool isCoordinateInSquare(int x, int y);
-    bool isSquareBuildable(int x, int y);
+    bool isSquareBuildable();
 
     void Update();
 
     void previewPlaceTower();
-    void placeTower(int x, int y, ActiveTower* tower);
+    void placeTower(ActiveTower* tower);
 
     int getX1() const;
     int getY1() const;
@@ -42,16 +42,7 @@ private:
     int y2;
     bool isValidBuildState;
     bool isInvalidBuildState;
-    /*
-     * each buildable terrain will have a 4x4 grid of buildable tiles
-     * each tower will be 2x2
-     */
-    std::vector<ActiveTower*> towerSpaces;
-    /*
-     * (x1,y1)------+
-     * |            |
-     * +-----------(x2,y2)
-    */
+    ActiveTower* activeTower;
 
 };
 

@@ -9,14 +9,19 @@
 Deck::Deck() {
     ResetDeck();
     ShuffleDeck();
+    cardsBackup = cards;
 }
 
 void Deck::ResetDeck() {
     for(int suit = HEART; suit <= DIAMOND; suit++){
-        for(int value = ACE; value <= KING; value++){
+        for(int value = TWO; value <= ACE; value++){
             cards.push_back(Card(static_cast<Suit>(suit), static_cast<CardValue>(value)));
         }
     }
+}
+
+void Deck::RestoreDeck() {
+    cards = cardsBackup;
 }
 
 void Deck::ShuffleDeck() {
@@ -97,3 +102,5 @@ void Deck::PrintDeck() {
         }
     }
 }
+
+
