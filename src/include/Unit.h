@@ -30,6 +30,7 @@ public:
     float getCurrPosX() const;
     float getCurrPosY() const;
     int getSize() const;
+    float getHealthPercent();
 
 private:
     int getNewDirection(TerrainTypes terrain, int orientation);
@@ -38,6 +39,7 @@ private:
     std::string description;
 
     int currHP;
+    int maxHP;
     int size;
     int speed;
     float currPosX;

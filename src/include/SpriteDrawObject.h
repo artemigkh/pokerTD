@@ -15,8 +15,10 @@ public:
 
     //orientation: 0: down, 1: left, 2: right, 3: up
     void Draw(float windowPosX, float windowPosY, int windowSizeWidth, int windowSizeHeight, int groupOffsetX,
-              int groupOffsetY, int frame, int orientation);
+              int groupOffsetY, int frame, int orientation, float healthPercent);
 private:
+    void DrawHealthBar(float windowPosX, float windowPosY, int windowSizeWidth, int windowSizeHeight, float healthPercent);
+
     int getXofSpriteSheet(int groupOffsetX, int frame);
     int getYofSpriteSheet(int groupOffsetY, int orientation);
 

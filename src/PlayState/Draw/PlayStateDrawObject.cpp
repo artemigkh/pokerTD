@@ -126,7 +126,8 @@ void PlayStateDrawObject::DrawUnits(std::vector<Unit> units) {
                                                    unit.getSpriteSheetOffsetX(),
                                                    unit.getSpriteSheetOffsetY(),
                                                    unit.getFramePos(),
-                                                   unit.getOrientation()
+                                                   unit.getOrientation(),
+                                                   unit.getHealthPercent()
         );
     }
 }

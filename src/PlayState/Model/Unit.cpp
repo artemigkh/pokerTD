@@ -170,13 +170,17 @@ int Unit::getNewDirection(TerrainTypes terrain, int orientation) {
 Unit::Unit(const std::string &name, const std::string &description, int currHP, int size, int speed, float currPosX,
            float currPosY, int terrainX, int terrainY, int orientation, int spriteSheetID, int spriteSheetOffsetX,
            int spriteSheetOffsetY)
-        : name(name), description(description), currHP(currHP), size(size), speed(speed),
+        : name(name), description(description), currHP(currHP), maxHP(currHP), size(size), speed(speed),
           currPosX(currPosX), currPosY(currPosY), terrainX(terrainX), terrainY(terrainY),
           orientation(orientation), spriteSheetID(spriteSheetID),
           spriteSheetOffsetX(spriteSheetOffsetX), spriteSheetOffsetY(spriteSheetOffsetY) {
     framePosCounter = 0;
     framePos = 0;
     tickMoveSpeed = speed / gac::FRAMES_PER_SECOND;
+}
+
+float Unit::getHealthPercent() {
+    return (float)currHP / (float)maxHP;
 }
 
 

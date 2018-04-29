@@ -26,6 +26,10 @@ namespace grc{
     const int DESC_TEXT_SIZE = 12;
     const int DESC_TOP_MARGIN = 6;
     const int DESC_SIDE_OFFSET = 75;
+
+    const int HP_BAR_HEIGHT = 5;
+    const int HP_BAR_WIDTH = 45;
+    const int HP_BAR_OFFSET = SPRITE_HEIGHT;
 }
 
 #endif //POKERTD_GRAPHICSCONSTANTS_H
